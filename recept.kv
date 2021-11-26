@@ -1,0 +1,102 @@
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+WindowManager:
+    transition: NoTransition()
+	StartWindow:
+	AddWindow:
+	    id: dobavit
+	BuyWindow:
+
+
+<StartWindow>:
+	name: "start"
+    #orientation: "vertical"
+	BoxLayout:
+	    size_hint: 1, 0.1
+	    pos_hint: { "y" : .90}
+		BoxLayout:
+		    Label:
+		        text: "Рецепты"
+		BoxLayout:
+		    Button:
+		        text: "Добавить рецепт"
+		        on_release: app.root.current = "add"
+		BoxLayout:
+		    Button:
+		        text: "Список покупок"
+		        on_release: app.root.current = "buy"
+
+	BoxLayout:
+	    size_hint: 1, 0.9
+
+
+
+<AddWindow>:
+    name: "add"
+    orientation: "vertical"
+	BoxLayout:
+	    size_hint: 1, 0.1
+	    pos_hint: { "y" : .90}
+		BoxLayout:
+		    Button:
+		        text: "Рецепты"
+		        on_release: app.root.current = "start"
+		BoxLayout:
+		    Label:
+		        text: "Добавить рецепт"
+		BoxLayout:
+		    Button:
+		        text: "Список покупок"
+		        on_release: app.root.current = "buy"
+
+	GridLayout:
+	    cols: 1
+	    rows: 4
+	    size_hint: 1, 0.9
+	    BoxLayout:
+	        id:bl
+	        size_hint: 1, 0.5
+	        Label:
+	            text: "Название"
+	        TextInput:
+	            id: nazvanie
+	    BoxLayout:
+	        Label:
+	            text: "Ингридиенты"
+	        TextInput:
+	            id: ingridients
+	    BoxLayout:
+	        Label:
+	            text: "Рецепт"
+	        TextInput:
+	            id: receptik
+	    Button:
+	        size_hint: 1, .5
+	        text: "добавить"
+	        on_press: app.addR()
+
+
+
+<BuyWindow>:
+    name: "buy"
+    orientation: "vertical"
+	BoxLayout:
+	    size_hint: 1, 0.1
+	    pos_hint: { "y" : .90}
+		BoxLayout:
+		    Button:
+		        text: "Рецепты"
+		        on_release: app.root.current = "start"
+		BoxLayout:
+		    Button:
+		        text: "Добавить рецепт"
+		        on_release: app.root.current = "add"
+		BoxLayout:
+		    Label:
+		        text: "Список покупок"
+
+	GridLayout:
+
+
+
+
+
